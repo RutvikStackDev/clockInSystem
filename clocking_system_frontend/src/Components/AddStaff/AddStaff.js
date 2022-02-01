@@ -8,7 +8,7 @@ export const AddStaff = () => {
   };
 
   const handleSubmit = () => {
-    const postURL = "http://localhost:4000/api/staff/newData";
+    const postURL = "http://localhost:4000/newData";
     fetch(postURL, {
       method: "POST",
       headers: {

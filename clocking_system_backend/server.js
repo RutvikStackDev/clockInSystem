@@ -13,7 +13,7 @@ MongoClient.connect("mongodb://localhost:27017")
     const staffCollection = db.collection("staff");
     const staffRouter = newRouter(staffCollection);
 
-    app.use("/api/staff", staffRouter);
+    app.use("/", staffRouter);
   })
   .catch(console.err);
 

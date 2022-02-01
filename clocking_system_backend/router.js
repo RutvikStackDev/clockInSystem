@@ -21,9 +21,21 @@ const newRouter = function (collection) {
   router.post("/newData", (req, res) => {
     const newData = req.body;
     collection
-      .insertOne(newData)
+      .insertOne({ name: "Frodo", clockedIn: false, date: [] })
       .then((result) => {
         res.json(result);
+      })
+      .catch((err) => errorCatcher(err));
+  });
+
+  router.put("/:id", (req, res) => {
+    const itemId = req.params.id;
+    const updatedItem = req.body;
+
+    collection
+      .findOneAndUpdate({ _id: ObjectID(itemId) }, { $set: updatedItem })
+      .then((result) => {
+        res.json(result.value);
       })
       .catch((err) => errorCatcher(err));
   });
